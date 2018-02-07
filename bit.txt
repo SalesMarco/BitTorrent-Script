@@ -1,0 +1,14 @@
+import requests, bs4
+from colorama import Fore, init
+init()
+print(Fore.WHITE + "pRECIO ACTUAL DEL BITCOIN")
+print(Fore.WHITE + "EXTRAYENDO DATOS.....")
+ 
+while True:
+    pet = requests.get("https://coinmarketcap.com/currencies/bitcoin/")
+ 
+    scrap = bs4.BeautifulSoup(pet.content, "lxml")
+ 
+    precio = scrap.select('span .text-large2')
+ 
+    print (Fore.WHITE + "El precio del Bitcoin es: " + Fore.BLUE + str(precio)[50:58])
